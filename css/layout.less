@@ -1,0 +1,90 @@
+// import variable less
+@import "./base/variable.less";
+
+// import base less
+@import "./base/base.less";
+
+// import vendors css
+@import (inline) "./vendors/normalize.css";
+
+body {
+    font-family: arial, sans-serif;
+    background-color: @base-background-color;
+    line-height: 1.5rem;
+    font-size: @base-font-size;
+    color: @base-color;
+    a {
+        color: @base-link-color;
+        transition: 
+            color .36s ease,
+            background-color .36s ease;
+        &:hover {
+            color: @base-link-hover-color;
+        }
+    }
+    .dom-ready {
+        display: none;
+    }
+}
+
+// layout
+.base-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 48px;
+    border-bottom: 1px solid @menu-border-color;
+    box-shadow: 0 0 3px @menu-border-color;
+    z-index: 1;
+    display: none;
+    // import menu css
+    @import (less) "./includes/menu.less";
+}
+@media (min-width:@normal-media-width) {
+    .base-menu {
+        display: block;
+    }
+}
+
+.base-mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 48px;
+    border-bottom: 1px solid @menu-border-color;
+    box-shadow: 0 0 3px @menu-border-color;
+    z-index: 1;
+    display: none;
+    transition: height .2s ease-in;
+    @import (less) "./includes/mobile-menu.less";
+}
+@media (max-width:@mobile-media-width) {
+    .base-mobile-menu {
+        display: block;
+    }
+}
+
+.base-content {
+    padding-top: 48px;
+    .base-content-main {
+        width: 51rem;
+        margin: 0 auto;
+    }
+}
+@media (max-width:@mobile-media-width) {
+    .base-content {
+        .base-content-main {
+            width: auto;
+            padding: 0 1rem;
+        }
+    }
+}
+
+.base-footer {
+    border-top: 1px solid @menu-border-color;
+    text-align: right;
+    // import footer css
+    @import (less) "./includes/footer.less";
+}
