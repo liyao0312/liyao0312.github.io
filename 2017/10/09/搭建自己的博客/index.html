@@ -1,0 +1,68 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>搭建自己的博客</title><link rel="stylesheet" href="css/normalize.css"><link rel="stylesheet" href="/css/hexo-theme-adoubi.css"><link rel="icon" href="/images/favicon.ico"></head><body><div class="header"><a class="github-link"><img class="github-image" src="/images/Aquicon-Github-small.png"></a><a class="email-link" href="mailto:null"><img class="email-image" src="/images/email-small.png"></a><a class="subscribe-link" href="/atom.xml"><img class="subscribe-image" src="/images/subscribe-small.png"></a></div><div class="content"><div class="post-item"></div><h2 class="post-title-wrapper"><p class="post-title">搭建自己的博客</p></h2><div class="post-date"><time datetime="2017-10-09T12:43:18.000Z">2017-10-09</time></div><div class="post-content"><p>很高兴我终于搭建了自己专属的一个博客了，在搭建此博客的过程中参照了好多前辈的经验，在此总结做一下笔记，文章最后也列出了引用的链接。</p>
+<p>#配置环境</p>
+<ol>
+<li>安装<a href="https://nodejs.org/" target="_blank" rel="external">Node</a>，点击去官网下载安装，一路默认。</li>
+<li>安装<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">Git</a>，点击进去可以按照廖雪峰老师的教程学习安装GIT，非常实用。</li>
+<li>申请<a href="https://github.com" target="_blank" rel="external">Github</a>，新建一个版本库，我的版本库是liyao0312.github.io，注意liyao0312与我的注册用户名一致，然后仓库设置里面点击Launch automatic page generator保存后发布github默认生成的一个静态站点。</li>
+</ol>
+<p>#正式安装Hexo</p>
+<p>我首先创建了一个blog文件，存放hexo的配置文件，然后进入blog里面安装Hexo</p>
+<p>执行如下命令安装Hexo：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo</div></pre></td></tr></table></figure>
+<p>然后执行init命令初始化Hexo，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo init</div></pre></td></tr></table></figure>
+<p>此时，安装完成。blog就是我的博客的目录，所有的操作都在这个blog文件夹里面进行。</p>
+<p>生成静态页面命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo generate //（hexo g也可以）</div></pre></td></tr></table></figure>
+<p>启动本地服务，进行文章预览调试，命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo server //以后每次部署到Github都提前预览下</div></pre></td></tr></table></figure>
+<p>浏览器输入<a href="http://localhost:4000，预览" target="_blank" rel="external">http://localhost:4000，预览</a></p>
+<p>#配置Github</p>
+<p>建立Repository</p>
+<p>建立与你用户名对应的仓库，仓库名必须为【your_user_name.github.io】，固定写法</p>
+<p>然后建立关联，找到blog下的config.yml文件，右键用Notepad++打开，翻到最下面，改成我这样子的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repository: ssh://git@github.com/liyao0312/liyao0312.github.io</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
+<p>然后执行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
+<p>然后，执行配置命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo deploy</div></pre></td></tr></table></figure>
+<p>然后再浏览器中输入<a href="http://liyao0312.github.io/就行了" target="_blank" rel="external">http://liyao0312.github.io/就行了</a></p>
+<p>部署步骤</p>
+<p>每次部署的步骤，可按以下三步来进行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line"></div><div class="line">hexo generate</div><div class="line"></div><div class="line">hexo deploy</div></pre></td></tr></table></figure>
+<p>一些常用命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">hexo new&quot;postName&quot; #新建文章</div><div class="line"></div><div class="line">hexo new page&quot;pageName&quot; #新建页面</div><div class="line"></div><div class="line">hexo generate #生成静态页面至public目录</div><div class="line"></div><div class="line">hexo server #开启预览访问端口（默认端口4000，&apos;ctrl + c&apos;关闭server）</div><div class="line"></div><div class="line">hexo deploy #将.deploy目录部署到GitHub</div><div class="line"></div><div class="line">hexo help # 查看帮助</div><div class="line"></div><div class="line">hexo version #查看Hexo的版本</div></pre></td></tr></table></figure>
+<p>#我配置完后我的版本信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$ hexo v</div><div class="line">hexo: 3.3.9</div><div class="line">hexo-cli: 1.0.3</div><div class="line">os: Windows_NT 6.3.9600 win32 x64</div><div class="line">http_parser: 2.7.0</div><div class="line">node: 6.11.4</div><div class="line">v8: 5.1.281.108</div><div class="line">uv: 1.11.0</div><div class="line">zlib: 1.2.11</div><div class="line">ares: 1.10.1-DEV</div><div class="line">icu: 58.2</div><div class="line">modules: 48</div><div class="line">openssl: 1.0.2l</div></pre></td></tr></table></figure>
+<p>#更换主题</p>
+<p>鉴于目前的水平，只能是克隆其他人做好的。</p>
+<ol>
+<li>去<a href="https://hexo.io/themes/" target="_blank" rel="external">HEXO主题列表</a>里面挑选一个合适的主题，记住他的SSH</li>
+<li>下载选好的主题到本地，使用命令</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git clone &lt;repository&gt; themes/&lt;theme-name&gt;</div></pre></td></tr></table></figure>
+<p>一定要记得去下载的主题文件夹里面看README.md里面写的东西，因为如果他的主题需要其他东西的话，他会写到里面</p>
+<ol>
+<li>修改config.yml里面的主题名字</li>
+</ol>
+<p>#发表文章</p>
+<ol>
+<li><p>执行下面这条命令来创建一篇新文章</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo new &quot;搭建自己的博客&quot;</div><div class="line">INFO  Created: E:\liyao_Git\blog\source\_posts\搭建自己的博客.md</div></pre></td></tr></table></figure>
+</li>
+<li><p>我们找到这个文件之后用Markdown编辑器或其他文本编辑器打开编辑,然后保存</p>
+</li>
+<li><p>生成页面，预览，部署到github</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div><div class="line">INFO  Start processing</div><div class="line">INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo d</div></pre></td></tr></table></figure>
+<p>#引用</p>
+<blockquote>
+<ol>
+<li><a href="http://www.jianshu.com/p/465830080ea9" target="_blank" rel="external">HEXO+Github,搭建属于自己的博客，潘柏信</a></li>
+<li><a href="https://hexo.io/zh-cn/docs/setup.html" target="_blank" rel="external">官网配置说明</a></li>
+</ol>
+</blockquote>
+</div></div><div class="footer"><div class="footer-copyright">Theme By <a href="https://github.com/shinux/hexo-theme-adoubi">Adoubi</a> , Powered By Hexo.</div></div></body></html>
