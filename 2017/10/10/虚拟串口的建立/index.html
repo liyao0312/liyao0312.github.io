@@ -42,17 +42,17 @@
 <meta property="og:url" content="http://yoursite.com/2017/10/10/虚拟串口的建立/index.html">
 <meta property="og:site_name" content="李 耀 | 永无止境">
 <meta property="og:description" content="现代软件工程课程项目CanToolApp中用到了COM口，也就是常用的串口通讯，是采用串行通信协议的扩展接口。正常的串口通讯是用串口通讯线（常用232协议或者485协议电缆连接）连接，实现和外部设备的数据交换。当然电脑上没有串口的可以用转换器连接到USB接口上。为了便于测试方便，我们可以通过虚拟串口进行测试。  设置虚拟串口 工具： 虚拟串口软件vspd 串口调试软件serial_port_ut">
-<meta property="og:image" content="https://liyao0312.github.io/source/img/1111.png">
-<meta property="og:image" content="https://liyao0312.github.io/source/img/222.png">
-<meta property="og:image" content="https://liyao0312.github.io/source/img/333.png">
-<meta property="og:image" content="https://liyao0312.github.io/source/img/444.png">
-<meta property="og:image" content="https://liyao0312.github.io/source/img/555.png">
-<meta property="og:image" content="https://liyao0312.github.io/source/img/666.png">
-<meta property="og:updated_time" content="2017-10-10T08:29:35.619Z">
+<meta property="og:image" content="https://liyao0312.github.io/img/1111.png">
+<meta property="og:image" content="https://liyao0312.github.io/img/222.png">
+<meta property="og:image" content="https://liyao0312.github.io/img/333.png">
+<meta property="og:image" content="https://liyao0312.github.io/img/444.png">
+<meta property="og:image" content="https://liyao0312.github.io/img/555.png">
+<meta property="og:image" content="https://liyao0312.github.io/img/666.png">
+<meta property="og:updated_time" content="2017-10-10T08:36:07.030Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="虚拟串口的建立">
 <meta name="twitter:description" content="现代软件工程课程项目CanToolApp中用到了COM口，也就是常用的串口通讯，是采用串行通信协议的扩展接口。正常的串口通讯是用串口通讯线（常用232协议或者485协议电缆连接）连接，实现和外部设备的数据交换。当然电脑上没有串口的可以用转换器连接到USB接口上。为了便于测试方便，我们可以通过虚拟串口进行测试。  设置虚拟串口 工具： 虚拟串口软件vspd 串口调试软件serial_port_ut">
-<meta name="twitter:image" content="https://liyao0312.github.io/source/img/1111.png">
+<meta name="twitter:image" content="https://liyao0312.github.io/img/1111.png">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
@@ -145,13 +145,13 @@
 <ul>
 <li><p>创建虚拟串口</p>
 <ul>
-<li><p>打开虚拟串口软件，串口类型分为三类，第一类是“physical ports”表示物理串口，是实际的串口；第二类便是“virtual ports”虚拟串口；第三类表示其他类型的串口，一般用不上。<br><img src="https://liyao0312.github.io/source/img/1111.png" alt="虚拟串口软件图"></p>
+<li><p>打开虚拟串口软件，串口类型分为三类，第一类是“physical ports”表示物理串口，是实际的串口；第二类便是“virtual ports”虚拟串口；第三类表示其他类型的串口，一般用不上。<br><img src="https://liyao0312.github.io/img/1111.png" alt="虚拟串口软件图"></p>
 </li>
-<li><p>添加虚拟串口都是成对添加的，首先选择两个虚拟串口号，一般不要选择com1和com2，可以从com3开始设定，这里选择com3和com4，然后点击“添加串口”。<br><img src="https://liyao0312.github.io/source/img/222.png" alt="天假虚拟串口"></p>
+<li><p>添加虚拟串口都是成对添加的，首先选择两个虚拟串口号，一般不要选择com1和com2，可以从com3开始设定，这里选择com3和com4，然后点击“添加串口”。<br><img src="https://liyao0312.github.io/img/222.png" alt="天假虚拟串口"></p>
 </li>
-<li><p>打开com3和com4可以看到下拉栏中串口信息，包括串口打开状态、波特率、接收和发送的字节数。<br><img src="https://liyao0312.github.io/source/img/333.png" alt="虚拟串口信息"></p>
+<li><p>打开com3和com4可以看到下拉栏中串口信息，包括串口打开状态、波特率、接收和发送的字节数。<br><img src="https://liyao0312.github.io/img/333.png" alt="虚拟串口信息"></p>
 </li>
-<li><p>打开设备管理器查看虚拟串口，可以看到多了com3和com4两个串口，并且两个串口是对应的，com3发的数据由com4接收，com4发的数据由com3接收。<br><img src="https://liyao0312.github.io/source/img/444.png" alt=""></p>
+<li><p>打开设备管理器查看虚拟串口，可以看到多了com3和com4两个串口，并且两个串口是对应的，com3发的数据由com4接收，com4发的数据由com3接收。<br><img src="https://liyao0312.github.io/img/444.png" alt=""></p>
 </li>
 </ul>
 </li>
@@ -160,9 +160,9 @@
 <li>打开串口调试软件，打开两个窗口，便于互发互收。</li>
 <li>设置波特率等参数，两个串口的波特率要一致。</li>
 <li>分别打开com3和com4；</li>
-<li><p>发送数据，看对方能否接收。<br><img src="https://liyao0312.github.io/source/img/555.png" alt=""></p>
+<li><p>发送数据，看对方能否接收。<br><img src="https://liyao0312.github.io/img/555.png" alt=""></p>
 </li>
-<li><p>这时候可以看看虚拟串口软件有什么变化，可以看到两个的串口信息都更新了，可以显示发送和接收的字节数。<br><img src="https://liyao0312.github.io/source/img/666.png" alt=""></p>
+<li><p>这时候可以看看虚拟串口软件有什么变化，可以看到两个的串口信息都更新了，可以显示发送和接收的字节数。<br><img src="https://liyao0312.github.io/img/666.png" alt=""></p>
 </li>
 <li><p>如果不需要虚拟串口了，就可以把虚拟串口删除，不过得解除串口的使用状态，在调试软件中关闭串口，然后在虚拟串口软件中删除串口。<br>以后需要的时候再用软件添加就可以啦。</p>
 </li>
