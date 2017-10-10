@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="虚拟串口的建立"/>
+
+
+
+
+  <meta name="keywords" content="串口," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="李 耀 | 永无止境">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2017/10/10/虚拟串口的建立/"/>
+
+
+<meta name="description" content="现代软件工程课程项目CanToolApp中用到了COM口，也就是常用的串口通讯，是采用串行通信协议的扩展接口。正常的串口通讯是用串口通讯线（常用232协议或者485协议电缆连接）连接，实现和外部设备的数据交换。当然电脑上没有串口的可以用转换器连接到USB接口上。为了便于测试方便，我们可以通过虚拟串口进行测试。  设置虚拟串口 工具： 虚拟串口软件vspd 串口调试软件serial_port_ut">
+<meta name="keywords" content="串口">
+<meta property="og:type" content="article">
+<meta property="og:title" content="虚拟串口的建立">
+<meta property="og:url" content="http://yoursite.com/2017/10/10/虚拟串口的建立/index.html">
+<meta property="og:site_name" content="李 耀 | 永无止境">
+<meta property="og:description" content="现代软件工程课程项目CanToolApp中用到了COM口，也就是常用的串口通讯，是采用串行通信协议的扩展接口。正常的串口通讯是用串口通讯线（常用232协议或者485协议电缆连接）连接，实现和外部设备的数据交换。当然电脑上没有串口的可以用转换器连接到USB接口上。为了便于测试方便，我们可以通过虚拟串口进行测试。  设置虚拟串口 工具： 虚拟串口软件vspd 串口调试软件serial_port_ut">
+<meta property="og:image" content="http://a2.qpic.cn/psb?/V14E01A93cLmWA/xUgnLBLQZ0PxEJ5yUn6.zqRFK6ynjMueQTMJyQm*cCU!/b/dPcAAAAAAAAA&bo=ZgKSAQAAAAADB9U!&rf=viewer_4">
+<meta property="og:image" content="http://a2.qpic.cn/psb?/V11u86YH0JkXvC/9RoWLzm1iZuWiZ6z1dOe5E3kWWd.Z0CBjSPMVWJa2OI!/b/dB4BAAAAAAAA&bo=bAKVAQAAAAADB9g!">
+<meta property="og:image" content="http://a3.qpic.cn/psb?/V11u86YH0JkXvC/yIuCTwWOoGr8gfEXosVA92TAQNTbAt22ksL8rPRrkuw!/b/dEQAAAAAAAAA&">
+<meta property="og:image" content="http://a2.qpic.cn/psb?/V11u86YH0JkXvC/BCqzibU7GsRr72gfHqFEp4FqMZdkpsBSqmxmfY986RA!/b/dDQAAAAAAAAA&bo=twJBAQAAAAADB9c!&rf=viewer_4">
+<meta property="og:image" content="http://a1.qpic.cn/psb?/V11u86YH0JkXvC/aylL*UnXKy1VMAeCUe5*Dm.ZkLCGRe.6wAII2YstCkg!/b/dBoBAAAAAAAA&bo=vgMCAgAAAAADAJg!&rf=viewer_4">
+<meta property="og:image" content="http://a1.qpic.cn/psb?/V11u86YH0JkXvC/ASLAZrbjRQ9Cz2Sd.K4ntcHWwV0D.x6q8Ms5v7R8AZI!/b/dJwAAAAAAAAA&bo=bAKVAQAAAAADAN8!&rf=viewer_4">
+<meta property="og:updated_time" content="2017-10-10T04:02:38.323Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="虚拟串口的建立">
+<meta name="twitter:description" content="现代软件工程课程项目CanToolApp中用到了COM口，也就是常用的串口通讯，是采用串行通信协议的扩展接口。正常的串口通讯是用串口通讯线（常用232协议或者485协议电缆连接）连接，实现和外部设备的数据交换。当然电脑上没有串口的可以用转换器连接到USB接口上。为了便于测试方便，我们可以通过虚拟串口进行测试。  设置虚拟串口 工具： 虚拟串口软件vspd 串口调试软件serial_port_ut">
+<meta name="twitter:image" content="http://a2.qpic.cn/psb?/V14E01A93cLmWA/xUgnLBLQZ0PxEJ5yUn6.zqRFK6ynjMueQTMJyQm*cCU!/b/dPcAAAAAAAAA&bo=ZgKSAQAAAAADB9U!&rf=viewer_4">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> 虚拟串口的建立 - 李 耀 | 永无止境 </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">李 耀 | 永无止境</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          虚拟串口的建立
+        
+      </h1>
+
+      <time class="post-time">
+          Oct 10 2017
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <blockquote>
+<p>现代软件工程课程项目CanToolApp中用到了COM口，也就是常用的串口通讯，是采用串行通信协议的扩展接口。正常的串口通讯是用串口通讯线（常用232协议或者485协议电缆连接）连接，实现和外部设备的数据交换。当然电脑上没有串口的可以用转换器连接到USB接口上。为了便于测试方便，我们可以通过虚拟串口进行测试。</p>
+</blockquote>
+<h2 id="设置虚拟串口"><a href="#设置虚拟串口" class="headerlink" title="设置虚拟串口"></a>设置虚拟串口</h2><ul>
+<li>工具：<ul>
+<li>虚拟串口软件vspd</li>
+<li>串口调试软件serial_port_utility_Jisuxz.com。</li>
+</ul>
+</li>
+</ul>
+<p>这两个软件可以到我的百度云盘下载：链接：<a href="http://pan.baidu.com/s/1o8JYksy" target="_blank" rel="external">http://pan.baidu.com/s/1o8JYksy</a> 密码：11sc</p>
+<ul>
+<li>安装</li>
+</ul>
+<p>默认安装就可以，安装完成后可以汉化破解：把Cracked文件夹里的vspdconfig.exe和vspdctl.dll复制到安装目录后就可完成。</p>
+<ul>
+<li><p>创建虚拟串口</p>
+<ul>
+<li><p>打开虚拟串口软件，串口类型分为三类，第一类是“physical ports”表示物理串口，是实际的串口；第二类便是“virtual ports”虚拟串口；第三类表示其他类型的串口，一般用不上。<br><img src="http://a2.qpic.cn/psb?/V14E01A93cLmWA/xUgnLBLQZ0PxEJ5yUn6.zqRFK6ynjMueQTMJyQm*cCU!/b/dPcAAAAAAAAA&amp;bo=ZgKSAQAAAAADB9U!&amp;rf=viewer_4" alt="虚拟串口软件图"></p>
+</li>
+<li><p>添加虚拟串口都是成对添加的，首先选择两个虚拟串口号，一般不要选择com1和com2，可以从com3开始设定，这里选择com3和com4，然后点击“添加串口”。<br><img src="http://a2.qpic.cn/psb?/V11u86YH0JkXvC/9RoWLzm1iZuWiZ6z1dOe5E3kWWd.Z0CBjSPMVWJa2OI!/b/dB4BAAAAAAAA&amp;bo=bAKVAQAAAAADB9g!" alt="天假虚拟串口"></p>
+</li>
+<li><p>打开com3和com4可以看到下拉栏中串口信息，包括串口打开状态、波特率、接收和发送的字节数。<img src="http://a3.qpic.cn/psb?/V11u86YH0JkXvC/yIuCTwWOoGr8gfEXosVA92TAQNTbAt22ksL8rPRrkuw!/b/dEQAAAAAAAAA&amp;" alt="虚拟串口信息"></p>
+</li>
+<li><p>打开设备管理器查看虚拟串口，可以看到多了com3和com4两个串口，并且两个串口是对应的，com3发的数据由com4接收，com4发的数据由com3接收。<img src="http://a2.qpic.cn/psb?/V11u86YH0JkXvC/BCqzibU7GsRr72gfHqFEp4FqMZdkpsBSqmxmfY986RA!/b/dDQAAAAAAAAA&amp;bo=twJBAQAAAAADB9c!&amp;rf=viewer_4" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="测试虚拟串口"><a href="#测试虚拟串口" class="headerlink" title="测试虚拟串口"></a>测试虚拟串口</h2><ul>
+<li>打开串口调试软件，打开两个窗口，便于互发互收。</li>
+<li>设置波特率等参数，两个串口的波特率要一致。</li>
+<li>分别打开com3和com4；</li>
+<li><p>发送数据，看对方能否接收。<img src="http://a1.qpic.cn/psb?/V11u86YH0JkXvC/aylL*UnXKy1VMAeCUe5*Dm.ZkLCGRe.6wAII2YstCkg!/b/dBoBAAAAAAAA&amp;bo=vgMCAgAAAAADAJg!&amp;rf=viewer_4" alt=""></p>
+</li>
+<li><p>这时候可以看看虚拟串口软件有什么变化，可以看到两个的串口信息都更新了，可以显示发送和接收的字节数。<img src="http://a1.qpic.cn/psb?/V11u86YH0JkXvC/ASLAZrbjRQ9Cz2Sd.K4ntcHWwV0D.x6q8Ms5v7R8AZI!/b/dJwAAAAAAAAA&amp;bo=bAKVAQAAAAADAN8!&amp;rf=viewer_4" alt=""></p>
+</li>
+<li><p>如果不需要虚拟串口了，就可以把虚拟串口删除，不过得解除串口的使用状态，在调试软件中关闭串口，然后在虚拟串口软件中删除串口。<br>以后需要的时候再用软件添加就可以啦。</p>
+</li>
+</ul>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
+<li>串口是成对添加的，并且可以添加多组串口。</li>
+<li>波特率最好设置为一致</li>
+<li>自己编写的串口软件也可以通过这种方式进行测试，用来判断是否正确，而不需要用硬件设备。</li>
+</ul>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><blockquote>
+<ol>
+<li><p><a href="http://jingyan.baidu.com/article/4ae03de31828973eff9e6b8e.html" target="_blank" rel="external">如何设置虚拟串口</a>，百度经验</p>
+</li>
+<li><p><a href="http://blog.csdn.net/u013232740/article/details/49838233" target="_blank" rel="external">虚拟串口软件和串口调试助手的简单使用</a> </p>
+</li>
+<li><p><a href="http://www.cnblogs.com/zheng123/p/7586623.html" target="_blank" rel="external">Windows系统添加虚拟串口及CanToolApp功能1的实现</a>，郑伟 </p>
+</li>
+</ol>
+</blockquote>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/串口/">串口</a>
+          
+        </div>
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2017/10/09/搭建自己的博客/">
+        <span class="next-text nav-default">搭建自己的博客</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2012 -
+    
+    2017
+    <span class="footer-author">LiYao.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/henryhuang/hexo-theme-polarbearsimple">Polar Bear Simple</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
